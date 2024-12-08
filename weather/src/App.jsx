@@ -1,4 +1,4 @@
-import Weather from "./pages/Weather";
+import Weather from "./pages/Weather/Weather";
 
 const App = () => {
   return <Weather />;
