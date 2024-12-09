@@ -42,10 +42,10 @@ const Weather = () => {
         console.log(response.data, "response");
         const dailyWeather = response.data.daily.time.map((time, i) => ({
           day: time,
-          temp: response.data.daily.temperature_2m_max[i],
-          wind: response.data.daily.wind_speed_10m_max[i],
-          probability: response.data.daily.precipitation_probability_max[i],
-          status: response.data.daily.weather_code[i],
+          temp: response?.data?.daily?.temperature_2m_max[i],
+          wind: response?.data?.daily?.wind_speed_10m_max[i],
+          probability: response?.data?.daily?.precipitation_probability_max[i],
+          status: response?.data?.daily?.weather_code[i],
         }));
         setDailyWeather(dailyWeather);
         setCurrentWeather(response.data.current);
@@ -120,7 +120,7 @@ const Weather = () => {
           </div>
         </div>
         <div className={styles["weather-status-small"]}>
-          <p>Feel like {currentWeather.apparent_temperature}</p>
+          <p>Feel like {currentWeather?.apparent_temperature}</p>
           <p>{getWeather(currentWeather?.weather_code)}</p>
         </div>
         <div className={styles["hourly-grid"]}>
