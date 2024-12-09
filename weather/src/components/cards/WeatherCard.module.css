@@ -1,0 +1,27 @@
+.card {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: var(--white);
+  color: var(--dark);
+  border: 1px solid var(--dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 60px !important;
+  height: 100px !important;
+}
+
+.card > h3,
+p {
+  margin: 0;
+}
+
+.weather-sts {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%; 
+  display: block;
+}

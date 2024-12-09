@@ -2,19 +2,20 @@ main {
   display: grid;
   grid-template-columns: auto 300px;
   height: 550px;
-  width: 900px;
+  width: 1000px;
   border-radius: 30px;
   overflow: hidden;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 }
 
 .week {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   padding: 10px;
   background-color: var(--white);
 }
-.icons {
-  font-size: 18px;
-}
+
 .week > header {
   display: flex;
   justify-content: space-around;
@@ -24,14 +25,134 @@ main {
   color: var(--dark);
   margin-bottom: 10px;
 }
+
 .big-font {
+  display: inline-block;
   margin: 0;
   font-size: 160px;
   color: var(--dark);
   font-weight: 600;
+  line-height: 140px;
+}
+
+.icon-label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--dark);
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.total-weather-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  width: 150px;
+}
+
+.weather-status-big {
+  text-align: center;
+  font-size: 30px;
+  margin-block: 5px;
+  font-weight: 500;
+  color: var(--dark);
+}
+
+.weather-status-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.border {
+  border: 2px solid red;
 }
 
 .today {
   padding: 10px;
+  width: 100%;
+  overflow: hidden;
   background-color: var(--half-white);
+}
+
+.today .header {
+  margin-bottom: 10px;
+  font-size: 28px;
+  font-weight: 500;
+  text-align: center;
+  width: 100%;
+  color: var(--dark);
+}
+
+.today .time {
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  width: 100%;
+  color: var(--dark);
+}
+
+.icon-label-small {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  color: var(--dark);
+  width: auto;
+  margin-bottom: 5px;
+}
+
+.icon-label-small p {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.temp-small {
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  color: var(--dark);
+}
+
+.icon-container-small {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.weather-status-small {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.weather-status-small p {
+  font-size: 16px;
+  margin-bottom: 3px;
+  color: var(--dark);
+}
+
+.hourly-grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 6px;
 }
