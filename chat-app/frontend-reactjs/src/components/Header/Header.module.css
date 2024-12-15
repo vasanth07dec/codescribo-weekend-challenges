@@ -1,0 +1,63 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  height: 80px;
+  overflow: hidden; /* Prevents scrolling caused by the skew positioning*/
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.profile-container {
+  position: relative;
+  left: 15px;
+  height: 100%;
+  width: 400px;
+  background-image: linear-gradient(
+    to right,
+    var(--purple),
+    var(--light-purple)
+  );
+  transform: skew(-20deg); /* Skew the container */
+  overflow: hidden; /* Prevents any overflow from the skew effect */
+}
+
+.profile {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  width: 90%;
+  padding-inline: 10px;
+  transform: skew(20deg); /* Neutralize the skew for content */
+}
+
+.profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+.profile p {
+  margin: 0;
+  color: white;
+  font-weight: 500;
+}
+
+.profile .small {
+  font-size: 12px;
+}
+
+.nav input {
+  border-radius: 20px;
+  border: solid 1px #9a9a9a;
+  outline: none;
+  height: 30px;
+  max-width: 300px;
+  width: 100%;
+  padding-inline: 10px;
+}

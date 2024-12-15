@@ -1,0 +1,51 @@
+.chat-list-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow-y: clip;
+  max-height: 100%;
+  padding-block: 10px;
+  width: 280px;
+  background-color: var(--grey);
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.chat img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+.chat .user-name {
+  margin-top: 3px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.chat .user-info {
+  margin-top: 3px;
+  font-size: 12px;
+  font-weight: 400;
+}
+.chat:hover {
+  color: white;
+  background-color: var(--grey-hover);
+}
+
+.chat:hover p {
+  color: white;
+}
+
+.chat {
+  display: flex;
+  align-items: start;
+  gap: 10px;
+  padding-inline: 8px;
+  padding-block: 6px;
+  cursor: pointer;
+  border-bottom: 1px solid #c4c4c4;
+}
