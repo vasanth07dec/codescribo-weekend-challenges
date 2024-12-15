@@ -74,6 +74,10 @@
 }
 
 .chat-body {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
   flex-grow: 1;
   padding: 10px;
   overflow-y: clip;
@@ -96,4 +100,61 @@
     var(--light-purple),
     var(--purple)
   );
+}
+
+.sender-msg {
+  display: inline;
+  background-image: linear-gradient(
+    to right,
+    var(--purple),
+    var(--light-purple)
+  );
+  margin: 0;
+  border-radius: 16px;
+  padding-inline: 14px;
+  padding-block: 6px;
+  max-width: 80%;
+  color: white;
+  text-wrap: wrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.receiver-msg {
+  display: inline;
+  background: whitesmoke;
+  margin: 0;
+  border-radius: 16px;
+  padding-inline: 14px;
+  padding-block: 6px;
+  max-width: 80%;
+  color: #333;
+  text-wrap: wrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.you {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.receiver {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+}
+
+.you .time {
+  color: var(--purple);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.receiver .time {
+  color: #888888;
+  font-weight: 600;
+  font-size: 13px;
 }
