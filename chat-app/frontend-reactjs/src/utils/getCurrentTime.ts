@@ -1,3 +1,6 @@
+/**
+ * calculate current time in 12-hour format with AM/PM
+ */
 export const getCurrentTime = () => {
   const now = new Date();
   const hours = now.getHours();

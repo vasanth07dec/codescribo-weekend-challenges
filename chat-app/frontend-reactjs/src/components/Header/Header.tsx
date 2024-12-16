@@ -4,6 +4,13 @@ import style from "./Header.module.css";
 type Props = {
   loginUserId: number | undefined;
 };
+
+/**
+ * Component - Header
+ * Showing user profile and search bar.
+ *
+ * @returns {JSX.Element} the Header component
+ */
 const Header = ({ loginUserId }: Props) => {
   const [currentUser] = users.filter((u) => u.id === loginUserId);
   return (

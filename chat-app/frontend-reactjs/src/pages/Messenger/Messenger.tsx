@@ -11,6 +11,12 @@ import { getCurrentTime } from "../../utils/getCurrentTime";
 
 const socket = io(import.meta.env.VITE_WEBSOCKET_URL);
 
+/**
+ * Component - Messenger
+ * Containing all the components for messenger.
+ *
+ * @returns {JSX.Element} the Messenger component
+ */
 const Messenger = () => {
   const [msg, setMsg] = useState("");
   const [loginUserId, setLoginUserId] = useState<number>();
@@ -19,6 +25,13 @@ const Messenger = () => {
     { senderId: number; message: string; time: string }[]
   >([]);
 
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
+
+  /**
+   * handleSendMsg - send message to the socket server
+   */
   const handleSendMsg = async () => {
     if (msg !== "") {
       console.log("message sent");
@@ -26,7 +39,7 @@ const Messenger = () => {
         senderId: loginUserId,
         receiverId: selectedUser?.id,
         message: msg,
-        time: getCurrentTime()
+        time: getCurrentTime(),
       };
       setMessageList((prev) => [
         ...prev,
@@ -36,10 +49,17 @@ const Messenger = () => {
     }
   };
 
+  /**
+   * Send login user id to backend for map the user id with socket id
+   * (so login can send message between them)
+   */
   useEffect(() => {
     socket.emit("register_user", loginUserId);
   }, [loginUserId]);
 
+  /**
+   * Receive message from socket server
+   */
   useEffect(() => {
     socket.on("receive_message", (data) => {
       console.log(data, "success");
@@ -54,9 +74,9 @@ const Messenger = () => {
   }, []);
 
   return (
-    <div className={style.container}>
+    <main className={style.container}>
       {!loginUserId && <LoginModal setLoginUserId={setLoginUserId} />}
-      <Sidebar />
+      <Sidebar setLoginUserId={setLoginUserId} />
       <div className={style["chat-container"]}>
         <Header loginUserId={loginUserId} />
         <div className={style["chat-lists-container"]}>
@@ -68,6 +88,7 @@ const Messenger = () => {
             <Inbox
               selectedUser={selectedUser}
               handleSendMsg={handleSendMsg}
+              msg={msg}
               setMsg={setMsg}
               messageList={messageList}
               loginUserId={loginUserId}
@@ -75,7 +96,7 @@ const Messenger = () => {
           ) : null}
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

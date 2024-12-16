@@ -9,21 +9,31 @@ import { User } from "../../types/user";
 type Props = {
   selectedUser: User;
   handleSendMsg: () => void;
+  msg: string;
   setMsg: (v: string) => void;
   messageList: { senderId: number; message: string; time: string }[];
   loginUserId: number | undefined;
 };
+
+/**
+ * Component - Inbox
+ * Showing transfered messages between users.
+ *
+ * @returns {JSX.Element} the Inbox component
+ */
 const Inbox = ({
   selectedUser,
   handleSendMsg,
+  msg,
   setMsg,
   messageList,
   loginUserId,
 }: Props) => {
   return (
     <header className={style.container}>
-      <div className={style["chat-container"]}>
-        <div className={style["header-container"]}>
+      <main className={style["chat-container"]}>
+        {/* Chat header */}
+        <section className={style["header-container"]}>
           <div className={style.profile}>
             <img src={selectedUser?.picture} alt="profile" />
             <div className={style.info}>
@@ -36,8 +46,9 @@ const Inbox = ({
             <IoIosCall color="#676dda" size={28} />
             <FaFolder color="#676dda" size={25} />
           </div>
-        </div>
-        <div className={style["chat-body"]}>
+        </section>
+        {/* Chat body */}
+        <section className={style["chat-body"]}>
           {messageList?.map((message, index) => (
             <div
               className={`${
@@ -59,23 +70,29 @@ const Inbox = ({
               <span className={style.time}>{message.time}</span>
             </div>
           ))}
-        </div>
-
-        <div className={style["chat-footer"]}>
+        </section>
+        {/* Footer */}
+        <section className={style["chat-footer"]}>
           <input
             type="text"
+            value={msg}
             placeholder="Enter your message"
             onChange={(e) => setMsg(e.target.value)}
           />
           <div className={style["icons-container"]}>
             <BsEmojiGrin color="#676dda" size={25} />
             <GoPlus color="#676dda" size={28} />
-            <button onClick={() => handleSendMsg()}>
+            <button
+              onClick={() => {
+                setMsg("");
+                handleSendMsg();
+              }}
+            >
               <FaArrowRight color="white" size={25} />
             </button>
           </div>
-        </div>
-      </div>
+        </section>
+      </main>
     </header>
   );
 };

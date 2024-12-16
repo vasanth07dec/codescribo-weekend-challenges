@@ -6,9 +6,16 @@ type Props = {
   setSelectedUser: (value: User) => void;
   loginUserId: number | undefined;
 };
+
+/**
+ * Component - ChatLists
+ * Showing other users for chat.
+ *
+ * @returns {JSX.Element} the ChatLists component
+ */
 const ChatLists = ({ setSelectedUser, loginUserId }: Props) => {
   return (
-    <div className={style["chat-list-container"]}>
+    <section className={style["chat-list-container"]}>
       {users
         ?.filter((u) => u.id !== loginUserId)
         ?.map((u) => (
@@ -24,7 +31,7 @@ const ChatLists = ({ setSelectedUser, loginUserId }: Props) => {
             </div>
           </div>
         ))}
-    </div>
+    </section>
   );
 };
 
