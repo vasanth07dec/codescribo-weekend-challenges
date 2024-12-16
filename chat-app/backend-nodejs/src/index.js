@@ -8,22 +8,20 @@ app.use(cors());
 
 //Creates an HTTP server explicitly for WebSocket bind.
 const server = http.createServer(app);
+
 // binds the Socket.IO server to the HTTP server, enabling WebSocket support alongside HTTP routes
 const io = new Server(server, {
   cors: {
+    // In default socket server set same origin for connection
+    // you haven't use same origin need to give your origin
     origin: "http://localhost:5173",
-    methods: ["GET", "POST"],
+    methods: ["GET"],
   },
 });
 
 const users = {};
 io.on("connection", (socket) => {
   console.log(`User connected: ${socket.id}`);
-
-  socket.on("joinRoom", (data) => {
-    socket.join(data);
-    console.log(data, "room data");
-  });
 
   socket.on("register_user", (userId) => {
     // Remove any previous socket ID for the same user id
@@ -47,11 +45,11 @@ io.on("connection", (socket) => {
     );
 
     if (receiverSocketId) {
-      console.log("ready for send")
+      console.log("ready for send");
       io.to(receiverSocketId).emit("receive_message", {
         senderId,
         message,
-        time
+        time,
       });
     }
     console.log(receiverSocketId, "receiverSocketId");
